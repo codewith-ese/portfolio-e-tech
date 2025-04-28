@@ -872,7 +872,7 @@ footer {
 
 
 /* Dark Mode Styles */
-body.dark-mode {
+/* body.dark-mode {
     background-color: #0f172a;
     color: #e2e8f0;
 }
@@ -902,7 +902,7 @@ body.dark-mode .form-group textarea {
     cursor: pointer;
     font-size: 1.2rem;
     margin-left: 20px;
-}
+} */
 
 /* Skills Section */
 .skills {
