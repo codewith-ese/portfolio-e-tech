@@ -1627,3 +1627,62 @@ body.dark-mode .filter-btn.active {
         left: 70px;
     }
 }
+
+
+/* Mobile Menu Styles */
+@media (max-width: 768px) {
+    body.menu-open {
+        overflow: hidden;
+    }
+    
+    .nav-menu ul {
+        position: fixed;
+        top: var(--nav-height);
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - var(--nav-height));
+        background-color: var(--dark-color);
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 40px;
+        transition: var(--transition);
+        z-index: 999;
+    }
+    
+    .nav-menu ul.active {
+        left: 0;
+    }
+    
+    .nav-menu ul li {
+        margin: 15px 0;
+        font-size: 1.2rem;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+        z-index: 1000;
+    }
+}
+
+
+/* Better touch targets for mobile */
+@media (max-width: 768px) {
+    .btn {
+        padding: 15px 25px;
+    }
+    
+    .nav-menu ul li a {
+        padding: 10px 15px;
+        display: block;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        padding: 15px;
+    }
+    
+    .portfolio-item {
+        margin-bottom: 20px;
+    }
+}
