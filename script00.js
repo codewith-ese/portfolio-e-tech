@@ -1,11 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile Menu Toggle
+    // Mobile Menu Toggle - Fixed Version
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navMenu = document.querySelector('.nav-menu ul');
     
     mobileMenuBtn.addEventListener('click', function() {
         navMenu.classList.toggle('active');
         this.querySelector('i').classList.toggle('fa-times');
+        document.body.classList.toggle('menu-open');
     });
     
     // Close mobile menu when clicking on a link
@@ -13,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function() {
             navMenu.classList.remove('active');
             mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+            document.body.classList.remove('menu-open');
         });
     });
     
@@ -28,10 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     filterBtns.forEach(btn => {
         btn.addEventListener('click', function() {
-            // Remove active class from all buttons
             filterBtns.forEach(btn => btn.classList.remove('active'));
-            
-            // Add active class to clicked button
             this.classList.add('active');
             
             const filterValue = this.getAttribute('data-filter');
@@ -105,7 +104,6 @@ document.addEventListener('DOMContentLoaded', function() {
         resetTestimonialTimer();
     });
     
-    // Initialize testimonial slider
     showTestimonial(currentTestimonial);
     startTestimonialSlider();
     
@@ -152,7 +150,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Check for saved theme preference or use system preference
     const currentTheme = localStorage.getItem('theme') || 
                         (prefersDarkScheme.matches ? 'dark' : 'light');
     setTheme(currentTheme);
@@ -188,10 +185,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 5000);
     }
     
-    // Updated contact form handler for Formsubmit
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
-            // Don't prevent default to allow Formsubmit to handle submission
             const name = document.getElementById('name')?.value.trim();
             const email = document.getElementById('email')?.value.trim();
             const message = document.getElementById('message')?.value.trim();
@@ -208,30 +203,30 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Show temporary success message before redirect
             showAlert('Sending your message...', 'success', this);
         });
     }
     
-    // Keep your existing newsletter form handler if needed
-    newsletterForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const emailInput = this.querySelector('input[type="email"]');
-        const email = emailInput.value.trim();
-        
-        if (!email) {
-            showAlert('Please enter your email address', 'error', this);
-            return;
-        }
-        
-        if (!validateEmail(email)) {
-            showAlert('Please enter a valid email address', 'error', this);
-            return;
-        }
-        
-        showAlert('Thank you for subscribing to our newsletter!', 'success', this);
-        this.reset();
-    });
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const emailInput = this.querySelector('input[type="email"]');
+            const email = emailInput.value.trim();
+            
+            if (!email) {
+                showAlert('Please enter your email address', 'error', this);
+                return;
+            }
+            
+            if (!validateEmail(email)) {
+                showAlert('Please enter a valid email address', 'error', this);
+                return;
+            }
+            
+            showAlert('Thank you for subscribing!', 'success', this);
+            this.reset();
+        });
+    }
     
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -251,11 +246,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Intersection Observer for animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
-    };
-    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -266,14 +256,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 observer.unobserve(entry.target);
             }
         });
-    }, observerOptions);
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    });
     
-    // Observe elements that should animate when scrolled into view
     document.querySelectorAll('.service-card, .portfolio-item, .team-member, .about-stats, .skill-category, .blog-card').forEach(el => {
         observer.observe(el);
     });
     
-    // Add hover effect to client logos
+    // Client logo hover effects
     const clientLogos = document.querySelectorAll('.client-logo');
     clientLogos.forEach(logo => {
         logo.addEventListener('mouseenter', () => {
@@ -287,3 +279,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
