@@ -49,8 +49,20 @@
             </div>
             <div class="hero-image animate__animated animate__fadeInRight">
                 <img src="images/hero-b.webp" alt="Eseinone Monday" class="img-fluid">
+                <!-- Floating WhatsApp Button -->
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary animate__animated animate__pulse animate__infinite">Email Me</a>
+                    <a href="https://wa.me/2348075236542" 
+                    class="btn btn-whatsapp"
+                    target="_blank">
+                    <i class="fab fa-whatsapp"></i> Instant Chat
+                    </a>
+                </div>
+                <!-- Floating WhatsApp Button End -->
             </div>
+
         </div>
+
     </section>
 
     <!-- Skills Section -->
@@ -385,6 +397,26 @@
                 </div>
 
             </div>
+
+            <!-- WhatsApp Contact -->
+            <div class="info-item animate__animated animate__fadeInLeft">
+                <div class="info-icon" style="background-color: #25D366;">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <div class="info-text">
+                    <h3>Instant Chat</h3>
+                    <p>
+                        <a href="https://wa.me/2348075236542?text=Hi%20Monday,%20I%20saw%20your%20portfolio..." 
+                        target="_blank"
+                        style="color: var(--primary-color); font-weight: 600;">
+                        Start WhatsApp Chat
+                        </a>
+                    </p>
+                    <small style="color: var(--gray-color);">Typically replies within 2 hours</small>
+                </div>
+            </div>
+
+
         </div>
     </section>
 
@@ -436,5 +468,23 @@
         // Initialize animations
         new WOW().init();
     </script>
+
+    <!-- WhatsApp Button-->
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/2348075236542?text=Hi%20Monday,%20I%20saw%20your%20portfolio..." 
+    class="whatsapp-float pulse-animation" 
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span class="whatsapp-tooltip">Chat with me!</span>
+    </a>
+    <!-- WhatsApp Float End -->
+
+    <!-- Availability Badge -->
+    <div class="availability-badge">
+        <span class="online-dot"></span>
+        Available now (9AM - 5PM WAT)
+    </div>
 </body>
 </html>

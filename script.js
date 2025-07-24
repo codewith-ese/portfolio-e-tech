@@ -287,3 +287,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// WhatsApp link functionality 
+// Dynamic message based on page location
+document.querySelectorAll('.whatsapp-link').forEach(link => {
+    const pageSubject = document.title.includes('Portfolio') 
+        ? 'I saw your portfolio project...' 
+        : 'Regarding your web development services...';
+    link.href = `https://wa.me/2348075236542?text=Hi%20Monday,%20${encodeURIComponent(pageSubject)}`;
+});
+
+// Google Analytics event tracking for WhatsApp click
+document.querySelector('.whatsapp-float').addEventListener('click', function() {
+    gtag('event', 'click', {
+        'event_category': 'Contact',
+        'event_label': 'WhatsApp Click'
+    });
+});
